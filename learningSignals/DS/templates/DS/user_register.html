@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{% url 'DS:userRegister' %}" method="post">
+    <form action="{% url 'DS:user-register' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Register">

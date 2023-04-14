@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.db.models.signals import post_save
 
 # A user profile will be created whenever a user gets register using  the post_save signal.
 class UserProfile(models.Model):
@@ -12,3 +12,11 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+'''
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        user_profile = UserProfile.objects.create(user=instance)
+
+post_save.connect(receiver=create_user_profile, sender=User)
+'''
